@@ -16,7 +16,9 @@ function availablePosition(newPosition, mapSize) {
 
 function move(newPosition) {
     if (availablePosition(newPosition, state.mapSize)) {
-        histories.push(state);
+        var oldState = Object.assign({}, state); //shallow copy
+        // var oldState = JSON.parse(JSON.stringify(state)); //deep copy
+        histories.push(oldState);
         state.robotPosition = newPosition;
         render();
         return true;
@@ -38,6 +40,10 @@ function render() {
 
 function onCommandRight() {
     move(state.robotPosition + 1);
+}
+
+function onCommandLeft() {
+    move(state.robotPosition - 1);
 }
 
 function onReverse() {

@@ -8,7 +8,27 @@ function onCommandRight() {
             break;
         }
     }
-    mapCells[currentRobotLocation].innerHTML = '';
+    if(currentRobotLocation < mapCells.length - 1){
+        mapCells[currentRobotLocation].innerHTML = '';
+        // todo check the available of the target position
+        mapCells[currentRobotLocation + 1].innerHTML = 'R';
+    }
+    
+}
+
+function onCommandLeft() {
+    var mapCells = document.querySelectorAll('.map-cell');
+    var currentRobotLocation = 0;
+    for (var i = 0; i < mapCells.length; i++) {
+        if (mapCells[i].innerHTML.length > 0) {
+            currentRobotLocation = i;
+            break;
+        }
+    }
+    if (currentRobotLocation > 0){
+        mapCells[currentRobotLocation].innerHTML = '';
     // todo check the available of the target position
-    mapCells[currentRobotLocation + 1].innerHTML = 'R';
+        mapCells[currentRobotLocation - 1].innerHTML = 'R';
+    }
+    
 }

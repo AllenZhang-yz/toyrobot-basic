@@ -27,7 +27,7 @@ class Game {
     
     render() {
         var mapCells = document.querySelectorAll('.map-cell');
-        mapCells.forEach(function(aCell, index) {
+        mapCells.forEach((aCell, index) => {
             if (index === this.state.robotPosition) {
                 aCell.innerHTML = this.state.icon;
             } else {
@@ -40,6 +40,9 @@ class Game {
         this.move(this.state.robotPosition + 1);
     }
     
+    onCommandLeft() {
+        this.move(this.state.robotPosition - 1);
+    }
 }
 
 var game = new Game(5, 2, 'R');

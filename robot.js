@@ -18,6 +18,8 @@ class Game {
     move(newPosition) {
         if (this.availablePosition(newPosition, this.state.mapSize)) {
             this.state.robotPosition = newPosition;
+            newPosition === this.state.mapSize - 1 ? this.state.mapSize += 2 : null;
+            newPosition === this.state.mapSize - 4 ? this.state.mapSize -= 2 : null;
             this.render();
             return true;
         } else {
@@ -46,8 +48,13 @@ class Game {
         root.replaceWith(gameMap);
     }
 
+
     onCommandRight() {
         this.move(this.state.robotPosition + 1);
+    }
+
+    onCommandLeft() {
+        this.move(this.state.robotPosition - 1);
     }
 
 }
